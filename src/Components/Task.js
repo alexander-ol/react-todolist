@@ -8,10 +8,14 @@ class Task extends Component {
         this.setState({isDone: this.props.isDone});
     }
 
-    handleChange = event => {
-        this.setState({isDone: event.target.value});
-    }
+    // handleChange = event => {
+    //     this.setState({isDone: event.target.value});
+    // }
   
+    handleChange = event => {
+        this.setState({isDone: !this.state.isDone});
+    }
+
    render() {
     return (
       <div className='Task'>
