@@ -11,7 +11,7 @@ class Task extends Component {
     // handleChange = event => {
     //     this.setState({isDone: event.target.value});
     // }
-  
+  //spomechange
     handleChange = event => {
         this.setState({isDone: !this.state.isDone});
     }
