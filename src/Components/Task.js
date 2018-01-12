@@ -5,36 +5,37 @@ class Task extends Component {
     state = {};
 
     componentDidMount = () => {
-        this.setState({isDone: this.props.isDone});
+        //TODO: we dont  need this state actually, can use state in tasklist
+        this.setState({ isDone: this.props.isDone });
     }
 
     // handleChange = event => {
     //     this.setState({isDone: event.target.value});
     // }
-  //spomechange
-    handleChange = event => {
-        this.setState({isDone: !this.state.isDone});
+
+    handleClick = event => {
+        this.setState({ isDone: !this.state.isDone });
+        this.props.onTaskChanged(this.props.title);
     }
 
-   render() {
-    return (
-      <div className='Task'>
-          <p>Task title: {this.props.title} </p>
-          <p>Task description: {this.props.description}, 
-            IsDone: {this.state.isDone ? '+' : '-'} </p>
-            <form>
-                <label> Is done </label>
-                <input
-                    type="checkbox"
-                    checked={this.state.isDone}
-                    onChange={this.handleChange} />
-            </form>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='Task' onClick={ this.handleClick }>
+                <p>"{ this.props.title }" </p>
+                <form>
+                    <label> Is done </label>
+                    <input
+                        type="checkbox"
+                        checked={ this.state.isDone }
+                        onChange={ this.handleClick } />
+                </form>
+                <p>Description: { this.props.description }</p>
+            </div>
+        );
+    }
 }
 
-Task.defaultProps ={
+Task.defaultProps = {
     title: 'Default title',
     description: 'Default description',
     isDone: false
